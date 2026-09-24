@@ -8,15 +8,15 @@ interactive TUI and a scriptable CLI.
 Requires Go 1.25.3 or newer.
 
 ```sh
-go build -o gooooo .
-./gooooo
+go build -o gofiles .
+./gofiles
 # Or run from source:
 go run .
 ```
 
 Running without arguments opens a folder browser, starting in the current
 directory. Browse to the folder you want and press `s` to preview its files.
-You can also use `gooooo tui` to browse, or `gooooo "$HOME/Downloads"` to open a
+You can also use `gofiles tui` to browse, or `gofiles "$HOME/Downloads"` to open a
 known directory's preview directly. The TUI requires an interactive terminal on both stdin
 and stdout. It uses [Bubble Tea](https://github.com/charmbracelet/bubbletea).
 
@@ -91,8 +91,8 @@ To clean up these files:
 
 Deletion is **permanent**. The confirmation explicitly warns that the operation
 cannot be undone or restored by this tool. Files are removed directly; they are
-not moved to local trash or the operating system's Trash. Existing
-`.gooooo-trash` folders from previous versions are left untouched.
+not moved to local trash or the operating system's Trash. Existing local trash folders
+from previous versions are left untouched.
 
 Only non-hidden regular files from the displayed preview can be deleted;
 directories, symlinks, and already moved/deleted entries are excluded. Organize
@@ -105,8 +105,8 @@ are rechecked before deletion, and files added after the preview are not include
 The existing commands remain available for scripts and non-interactive terminals:
 
 ```sh
-./gooooo organize "$HOME/Downloads"
-./gooooo organize "$HOME/Downloads" --apply
+./gofiles organize "$HOME/Downloads"
+./gofiles organize "$HOME/Downloads" --apply
 ```
 
 The `organize` command only previews source and destination paths. `--apply` creates

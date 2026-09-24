@@ -41,7 +41,7 @@ func TestDeleteModeConfirmationAndDuplicates(t *testing.T) {
 		t.Fatal("n should cancel")
 	}
 	contentIs(t, filepath.Join(dir, "report (1).pdf"), "first")
-	if _, err := os.Lstat(filepath.Join(dir, ".gooooo-trash")); !os.IsNotExist(err) {
+	if _, err := os.Lstat(filepath.Join(dir, ".gofiles-trash")); !os.IsNotExist(err) {
 		t.Fatal("cancel created trash")
 	}
 	m, _ = press(m, tea.KeyEnter)
@@ -63,7 +63,7 @@ func TestDeleteModeConfirmationAndDuplicates(t *testing.T) {
 		}
 
 	}
-	if _, err := os.Lstat(filepath.Join(dir, ".gooooo-trash")); !os.IsNotExist(err) {
+	if _, err := os.Lstat(filepath.Join(dir, ".gofiles-trash")); !os.IsNotExist(err) {
 		t.Fatal("permanent deletion created trash")
 	}
 	// Refresh in delete mode must not select the remaining normal file.
@@ -82,7 +82,7 @@ func TestDeleteOrdinaryFilePreservesExistingTrash(t *testing.T) {
 	dir := t.TempDir()
 	source := filepath.Join(dir, "ordinary.txt")
 	put(t, source, "delete me")
-	oldTrash := filepath.Join(dir, ".gooooo-trash")
+	oldTrash := filepath.Join(dir, ".legacy-trash")
 	if err := os.Mkdir(oldTrash, 0700); err != nil {
 		t.Fatal(err)
 	}
@@ -188,7 +188,7 @@ func TestDeleteRejectsChangedAndSpecialSources(t *testing.T) {
 				t.Fatal("changed source must be rejected")
 			}
 			contentIs(t, filepath.Join(dir, ".original"), "original")
-			if _, err := os.Lstat(filepath.Join(dir, ".gooooo-trash")); !os.IsNotExist(err) {
+			if _, err := os.Lstat(filepath.Join(dir, ".gofiles-trash")); !os.IsNotExist(err) {
 				t.Fatal("invalid source created trash")
 			}
 		})

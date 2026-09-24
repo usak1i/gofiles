@@ -1,4 +1,4 @@
-module github.com/usak1i/gooooo
+module github.com/usak1i/gofiles
 
 go 1.25.3
 

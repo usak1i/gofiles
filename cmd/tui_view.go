@@ -57,7 +57,7 @@ func (m tuiModel) View() tea.View {
 		return highlight(muted, left+"─") + highlight(cyan, title) + highlight(muted, strings.Repeat("─", max(0, m.width-3-ansi.StringWidth(title)))+right)
 	}
 	counts := m.plan.counts()
-	title, directory := "gooooo / ORGANIZE", m.plan.directory
+	title, directory := "gofiles / ORGANIZE", m.plan.directory
 	summary := fmt.Sprintf("%s selected  %s ready  %s moved  %s skipped  %s failed",
 		highlight(cyan, fmt.Sprint(m.selectedCount())), highlight(cyan, fmt.Sprint(counts.planned)),
 		highlight(green, fmt.Sprint(counts.moved)), highlight(yellow, fmt.Sprint(counts.skipped)), highlight(red, fmt.Sprint(counts.failed)))
@@ -85,7 +85,7 @@ func (m tuiModel) View() tea.View {
 		}
 	}
 	if m.deleting && !m.browsing {
-		title = "gooooo / PERMANENT DELETE"
+		title = "gofiles / PERMANENT DELETE"
 		summary = fmt.Sprintf("%s selected  %s deletable  %s deleted  %s failed",
 			highlight(yellow, fmt.Sprint(m.selectedCount())), highlight(cyan, fmt.Sprint(m.eligibleCount())),
 			highlight(green, fmt.Sprint(counts.deleted)), highlight(red, fmt.Sprint(counts.failed)))
@@ -94,7 +94,7 @@ func (m tuiModel) View() tea.View {
 
 	}
 	if m.browsing {
-		title, directory = "gooooo / CHOOSE FOLDER", m.browserDir
+		title, directory = "gofiles / CHOOSE FOLDER", m.browserDir
 		listTitle, columnTitle = "FOLDERS", "    NAME"
 		cursor, length = m.browserCursor, len(m.folders)
 		summary = highlight(cyan, "BROWSE") + "  Choose a folder before organizing files"
@@ -214,7 +214,7 @@ func (m tuiModel) View() tea.View {
 		highlight(muted, "└"+strings.Repeat("─", max(0, m.width-2))+"┘"),
 	)
 	if m.height < 15 || m.width < 35 {
-		lines = []string{highlight(cyan, "gooooo"), "Enlarge terminal to at least 35×15.", notice, "q quit · Esc cancel/stop"}
+		lines = []string{highlight(cyan, "gofiles"), "Enlarge terminal to at least 35×15.", notice, "q quit · Esc cancel/stop"}
 	}
 	for i := range lines {
 		lines[i] = ansi.Truncate(lines[i], m.width, "…")

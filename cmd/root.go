@@ -7,7 +7,7 @@ import (
 )
 
 func newRootCmd() *cobra.Command {
-	root := &cobra.Command{Use: "gooooo [directory]", Short: "Interactively preview and organize files by type", SilenceUsage: true, Args: cobra.MaximumNArgs(1), RunE: runTUI}
+	root := &cobra.Command{Use: "gofiles [directory]", Short: "Interactively preview and organize files by type", SilenceUsage: true, Args: cobra.MaximumNArgs(1), RunE: runTUI}
 	root.AddCommand(newOrganizeCmd(), newTUICmd())
 	return root
 }

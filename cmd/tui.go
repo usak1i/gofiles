@@ -23,7 +23,7 @@ func runTUI(cmd *cobra.Command, args []string) error {
 	input, inputOK := cmd.InOrStdin().(*os.File)
 	output, outputOK := cmd.OutOrStdout().(*os.File)
 	if !inputOK || !outputOK || !term.IsTerminal(input.Fd()) || !term.IsTerminal(output.Fd()) {
-		return fmt.Errorf("TUI requires an interactive terminal; use 'gooooo organize <directory>' for a text preview")
+		return fmt.Errorf("TUI requires an interactive terminal; use 'gofiles organize <directory>' for a text preview")
 	}
 	directory := "."
 	if len(args) > 0 {
