@@ -1,4 +1,4 @@
-# gooooo
+# gofiles
 
 A Go terminal app for organizing a download folder by file extension, with an
 interactive TUI and a scriptable CLI.
